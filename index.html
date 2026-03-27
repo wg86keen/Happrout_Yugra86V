@@ -2,55 +2,122 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Подключение YUGRA VPN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-select=none">
+    <title>YUGRA online VPN</title>
     <style>
+        :root {
+            --bg-color: #000000;
+            --container-bg: #0a0a0a;
+            --text-main: #ffffff;
+            --text-secondary: #888888;
+            --yugra-logo-green: #00ff00; /* Зеленый в логотипе */
+            --yugra-logo-blue: #0079c1;  /* Синий в логотипе */
+            
+            --apple-bg: #1a1a1a;       /* Темный фон для Apple */
+            --android-green: #3DDC84;   /* Официальный зеленый Android */
+        }
+
         body {
-            background-color: #000000; /* Глубокий черный */
-            color: #ffffff;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
             text-align: center;
         }
+
         .container {
-            padding: 20px;
-            border: 1px solid #333;
-            border-radius: 20px;
-            background: #0a0a0a;
-            max-width: 320px;
+            padding: 30px 20px;
+            border: 1px solid #222;
+            border-radius: 24px;
+            background: var(--container-bg);
+            width: 100%;
+            max-width: 340px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+
         .logo-text {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 28px;
+            font-weight: 800;
             margin-bottom: 10px;
+            letter-spacing: -1px;
         }
-        .yugra { color: #00ff00; } /* Зеленый */
-        .online { color: #0079c1; } /* Синий Газпром */
+        .yugra { color: var(--yugra-logo-green); }
+        .online { color: var(--yugra-logo-blue); }
         
-        .btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 15px 30px;
-            background-color: #0079c1;
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: bold;
-            transition: transform 0.2s;
-        }
-        .btn:active {
-            transform: scale(0.95);
-        }
-        p {
-            font-size: 14px;
-            color: #888;
+        .description {
+            font-size: 15px;
+            color: var(--text-secondary);
             line-height: 1.5;
+            margin-bottom: 30px;
+            padding: 0 10px;
         }
+
+        /* Общие стили кнопок */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            padding: 16px 20px;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            border: 1px solid transparent;
+        }
+
+        .btn:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Эффект нажатия */
+        .btn:active {
+            transform: scale(0.97);
+            opacity: 0.9;
+        }
+
+        /* Иконки внутри кнопок */
+        .btn svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            fill: currentColor; /* Цвет иконки как у текста */
+        }
+
+        /* Кнопка для iOS (Apple) */
+        .btn-apple {
+            background-color: var(--apple-bg);
+            color: white;
+            border-color: #333;
+        }
+        .btn-apple:hover {
+            background-color: #222;
+        }
+
+        /* Кнопка для Android + Windows (ТЕПЕРЬ ЗЕЛЕНАЯ) */
+        .btn-multi {
+            background-color: var(--android-green);
+            color: #000000; /* Черный текст для лучшей читаемости на зеленом */
+        }
+        .btn-multi:hover {
+            background-color: #32c675;
+        }
+        /* Убираем отступ у второй иконки */
+        .btn-multi svg.win-icon {
+            margin-left: -4px;
+            margin-right: 12px;
+        }
+
     </style>
 </head>
 <body>
@@ -59,9 +126,20 @@
         <div class="logo-text">
             <span class="yugra">YUGRA</span> <span class="online">online</span>
         </div>
-        <p>Нажмите кнопку ниже, чтобы автоматически добавить конфигурацию в приложение Happ.</p>
         
-        <a href="happ://routing/onadd/eyJOYW1lIjoiWXVncmEgVlBOIiwiR2xvYmFsUHJveHkiOiJ0cnVlIiwiUm91dGVPcmRlciI6ImJsb2NrLXByb3h5LWRpcmVjdCIsIlJlbW90ZUROU1R5cGUiOiJEb0giLCJSZW1vdGVETlNEb21haW4iOiJodHRwczovL2Rucy5nb29nbGUvZG5zLXF1ZXJ5IiwiUmVtb3RlRE5TSVAiOiI4LjguOC44IiwiRG9tZXN0aWNETlNUeXBlIjoiRG9IIiwiRG9tZXN0aWNETlNEb21haW4iOiJodHRwczovL2Rucy55YW5kZXgvZG5zLXF1ZXJ5IiwiRG9tZXN0aWNETlNJUCI6Ijc3Ljg4LjguOCIsIkdlb2lwdXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL0xveWFsc29sZGllci92MnJheS1ydWxlcy1kYXQvcmVsZWFzZXMvbGF0ZXN0L2Rvd25sb2FkL2dlb2lwLmRhdCIsIkdlb3NpdGV1cmwiOiJodHRwczovL2dpdGh1Yi5jb20vTG95YWxzb2xkaWVyL3YycmF5LXJ1bGVzLWRhdC9yZWxlYXNlcy9sYXRlc3QvZG93bmxvYWQvZ2Vvc2l0ZS5kYXQiLCJMYXN0VXBkYXRlZCI6IjE3NzQ1MjE0MDUiLCJEbnNIb3N0cyI6eyJkbnMuZ29vZ2xlIjoiOC44LjguOCIsImRucy55YW5kZXgiOiI3Ny44OC44LjgifSwiRGlyZWN0U2l0ZXMiOlsiZ2Vvc2l0ZTpjYXRlZ29yeS1ydSJdLCJEaXJlY3RJcCI6WyIxMC4wLjAuMC84IiwiMTcyLjE2LjAuMC8xMiIsIjE5Mi4xNjguMC4wLzE2IiwiMTY5LjI1NC4wLjAvMTYiLCIyMjQuMC4wLjAvNCIsIjI1NS4yNTUuMjU1LjI1NSIsImdlb2lwOnJ1Il0sIlByb3h5U2l0ZXMiOlsiZ2Vvc2l0ZTp0ZWxlZ3JhbSIsImdlb3NpdGU6eW91dHViZSJdLCJQcm94eUlwIjpbXSwiQmxvY2tTaXRlcyI6W10sIkJsb2NrSXAiOltdLCJEb21haW5TdHJhdGVneSI6IklQSWZOb25NYXRjaCIsIkZha2VETlMiOiJmYWxzZSIsIlVzZUNodW5rRmlsZXMiOiJ0cnVlIn0" class="btn">Установить маршрутизацию</a>
+        <p class="description">Выберите вашу платформу для автоматической настройки маршрутизации в приложении Happ.</p>
+        
+        <a href="happ://routing/onadd/eyJOYW1lIjoiWXVncmEgVlBOIiwiR2xvYmFsUHJveHkiOiJ0cnVlIiwiUm91dGVPcmRlciI6ImJsb2NrLXByb3h5LWRpcmVjdCIsIlJlbW90ZUROU1R5cGUiOiJEb0giLCJSZW1vdGVETlNEb21haW4iOiJodHRwczovL2Rucy5nb29nbGUvZG5zLXF1ZXJ5IiwiUmVtb3RlRE5TSVAiOiI4LjguOC44IiwiRG9tZXN0aWNETlNUeXBlIjoiRG9IIiwiRG9tZXN0aWNETlNEb21haW4iOiJodHRwczovL2Rucy55YW5kZXgvZG5zLXF1ZXJ5IiwiRG9tZXN0aWNETlNJUCI6Ijc3Ljg4LjguOCIsIkdlb2lwdXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL0xveWFsc29sZGllci92MnJheS1ydWxlcy1kYXQvcmVsZWFzZXMvbGF0ZXN0L2Rvd25sb2FkL2dlb2lwLmRhdCIsIkdlb3NpdGV1cmwiOiJodHRwczovL2dpdGh1Yi5jb20vTG95YWxzb2xkaWVyL3YycmF5LXJ1bGVzLWRhdC9yZWxlYXNlcy9sYXRlc3QvZG93bmxvYWQvZ2Vvc2l0ZS5kYXQiLCJMYXN0VXBkYXRlZCI6IjE3NzQ2Mjc1NjAiLCJEbnNIb3N0cyI6eyJkbnMuZ29vZ2xlIjoiOC44LjguOCIsImRucy55YW5kZXgiOiI3Ny44OC44LjgifSwiRGlyZWN0U2l0ZXMiOlsiZ2Vvc2l0ZTpjYXRlZ29yeS1ydSJdLCJEaXJlY3RJcCI6WyIxMC4wLjAuMC84IiwiMTcyLjE2LjAuMC8xMiIsIjE5Mi4xNjguMC4wLzE2IiwiMTY5LjI1NC4wLjAvMTYiLCIyMjQuMC4wLjAvNCIsIjI1NS4yNTUuMjU1LjI1NSIsImdlb2lwOnJ1Il0sIlByb3h5U2l0ZXMiOlsiZ2Vvc2l0ZTp0ZWxlZ3JhbSIsImdlb3NpdGU6eW91dHViZSJdLCJQcm94eUlwIjpbXSwiQmxvY2tTaXRlcyI6W10sIkJsb2NrSXAiOltdLCJEb21haW5TdHJhdGVneSI6IklQSWZOb25NYXRjaCIsIkZha2VETlMiOiJmYWxzZSIsIlVzZUNodW5rRmlsZXMiOiJmYWxzZSJ9" class="btn btn-apple">
+            <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 0 184.8 0 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-39-19.9-50-50-50-85.3zm-39.7-142c23.6-28.9 33-69.8 28.5-107.2-30.8 1.4-67.6 20.3-88.5 45-18.1 21.2-31.5 59.5-24.9 96.5 33.3 3.6 63.8-10.4 84.9-34.3z"/></svg>
+            Подключить на iOS
+        </a>
+
+        <a href="happ://routing/onadd/eyJOYW1lIjoiWXVncmEgVlBOIiwiR2xvYmFsUHJveHkiOiJ0cnVlIiwiUm91dGVPcmRlciI6ImJsb2NrLXByb3h5LWRpcmVjdCIsIlJlbW90ZUROU1R5cGUiOiJEb0giLCJSZW1vdGVETlNEb21haW4iOiJodHRwczovL2Rucy5nb29nbGUvZG5zLXF1ZXJ5IiwiUmVtb3RlRE5TSVAiOiI4LjguOC44IiwiRG9tZXN0aWNETlNUeXBlIjoiRG9IIiwiRG9tZXN0aWNETlNEb21haW4iOiJodHRwczovL2Rucy55YW5kZXgvZG5zLXF1ZXJ5IiwiRG9tZXN0aWNETlNJUCI6Ijc3Ljg4LjguOCIsIkdlb2lwdXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL0xveWFsc29sZGllci92MnJheS1ydWxlcy1kYXQvcmVsZWFzZXMvbGF0ZXN0L2Rvd25sb2FkL2dlb2lwLmRhdCIsIkdlb3NpdGV1cmwiOiJodHRwczovL2dpdGh1Yi5jb20vTG95YWxzb2xkaWVyL3YycmF5LXJ1bGVzLWRhdC9yZWxlYXNlcy9sYXRlc3QvZG93bmxvYWQvZ2Vvc2l0ZS5kYXQiLCJMYXN0VXBkYXRlZCI6IjE3NzQ1MjE0MDUiLCJEbnNIb3N0cyI6eyJkbnMuZ29vZ2xlIjoiOC44LjguOCIsImRucy55YW5kZXgiOiI3Ny44OC44LjgifSwiRGlyZWN0U2l0ZXMiOlsiZ2Vvc2l0ZTpjYXRlZ29yeS1ydSJdLCJEaXJlY3RJcCI6WyIxMC4wLjAuMC84IiwiMTcyLjE2LjAuMC8xMiIsIjE5Mi4xNjguMC4wLzE2IiwiMTY5LjI1NC4wLjAvMTYiLCIyMjQuMC4wLjAvNCIsIjI1NS4yNTUuMjU1LjI1NSIsImdlb2lwOnJ1Il0sIlByb3h5U2l0ZXMiOlsiZ2Vvc2l0ZTp0ZWxlZ3JhbSIsImdlb3NpdGU6eW91dHViZSJdLCJQcm94eUlwIjpbXSwiQmxvY2tTaXRlcyI6W10sIkJsb2NrSXAiOltdLCJEb21haW5TdHJhdGVneSI6IklQSWZOb25NYXRjaCIsIkZha2VETlMiOiJmYWxzZSIsIlVzZUNodW5rRmlsZXMiOiJ0cnVlIn0" class="btn btn-multi">
+            <svg viewBox="0 0 24 24"><path d="M17.523 15.3414C17.067 15.3414 16.691 14.9654 16.691 14.5094C16.691 14.0534 17.067 13.6774 17.523 13.6774C17.979 13.6774 18.355 14.0534 18.355 14.5094C18.355 14.9654 17.979 15.3414 17.523 15.3414ZM6.477 15.3414C6.021 15.3414 5.645 14.9654 5.645 14.5094C5.645 14.0534 6.021 13.6774 6.477 13.6774C6.933 13.6774 7.309 14.0534 7.309 14.5094C7.309 14.9654 6.933 15.3414 6.477 15.3414ZM17.967 10.3014L19.682 7.3294C19.801 7.1234 19.73 6.8604 19.524 6.7414C19.318 6.6224 19.055 6.6934 18.936 6.8994L17.186 9.9314C15.659 9.2394 13.91 8.8514 12 8.8514C10.09 8.8514 8.341 9.2394 6.814 9.9314L5.064 6.8994C4.945 6.6934 4.682 6.6224 4.476 6.7414C4.27 6.8604 4.199 7.1234 4.318 7.3294L6.033 10.3014C2.616 12.1624 0.283 15.5244 0 19.4674H24C23.717 15.5244 21.384 12.1624 17.967 10.3014Z"/></svg>
+            <svg class="win-icon" viewBox="0 0 448 512"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.1z"/></svg>
+            Android / Windows
+        </a>
+
     </div>
 
 </body>
